@@ -14,7 +14,7 @@ and [Squeak](http://www.squeak.org/) as painless as possible ...
    file to create your build matrix. If you 
    are using [Metacello][3] with your project you shouldn't have to make any other edits. Metacello
    and FileTree are pre-installed in the image.
-3. Create a [tests/travisCI.st][2] that contains the code to load your project, it's tests and launch 
+3. Create a [tests/travisCI.st][2] that contains the code to load your project, its tests and launch 
    the test harness.
 4. Enjoy.
 
@@ -44,7 +44,7 @@ SampleTest debug: #testError.
 
 ## Debugging Travis CI scripts
 
-At the beginning of the run, everthing written to the **Transcript** is routed to to the *TravisTranscript.txt* file. You can list the contents of the file by including the following line in your `.travis.yml` file:
+At the beginning of the run, everything written to the **Transcript** is routed to to the *TravisTranscript.txt* file. You can list the contents of the file by including the following line in your `.travis.yml` file:
 
 ```yml
    - cat TravisTranscript.txt
