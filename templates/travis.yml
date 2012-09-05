@@ -21,7 +21,7 @@ install:
 
 # edit the `build.sh` if you have put travisCI.st in a non-standard location
 script:
-   - ./build.sh -i $ST -s latAmMirror.st -m -f "$PROJECT_HOME/tests/travisCI.st" -o travisCI
+   - ./build.sh -i $ST -m -f "$PROJECT_HOME/tests/travisCI.st" -o travisCI
    - cd "${BUILD_PATH}/travisCI/"
    - $BUILDER_CI_HOME/buildImageErrorCheck.sh # dump Transcript on error and exit
    - $BUILDER_CI_HOME/buildTravisStatusCheck.sh # dump Transcript on failed tests and exit
