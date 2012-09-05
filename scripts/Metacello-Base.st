@@ -186,12 +186,13 @@ bootstrapPackage: aString from: aPath
 				location: aPath
 				user: ''
 				password: ''].
-	repository
-		versionReaderForFileNamed: aString , '.mcz'
-		do: [:reader | 
-			version := reader version.
-			version load.
-			version workingCopy repositoryGroup addRepository: repository]! !
+	MetacelloBuilderTravisCI retry: [
+    repository
+		  versionReaderForFileNamed: aString , '.mcz'
+		  do: [:reader | 
+			  version := reader version.
+			  version load.
+			  version workingCopy repositoryGroup addRepository: repository ]]! !
 
 !ConfigurationOf class methodsFor: 'private' stamp: 'dkh 6/10/2012 22:01'!
 ensureGoferVersion: goferVersion repositoryUrl: repositoryUrl
@@ -221,51 +222,36 @@ ensureMetacello: loadList
     Smalltalk
         at: #'MetacelloProject'
         ifAbsent: [ 
-            | retry version error gofer |
-            retry := false.
+            | version error gofer |
             (Array with: 'http://seaside.gemstone.com/ss/metacello' with: 'http://www.squeaksource.com/metacello')
                 do: [ :repositoryUrl | 
-                    [ 
                     "bootstrap Metacello"
                     self bootstrapMetacelloFrom: repositoryUrl.
-                    Smalltalk
+                    MetacelloBuilderTravisCI retry: [
+                      Smalltalk
                         at: #'ConfigurationOfMetacello'
                         ifAbsent: [ 
-                            gofer := (Smalltalk at: #'Gofer') new.
-                            gofer
+                              gofer := (Smalltalk at: #'Gofer') new.
+                              gofer
                                 perform: #'url:' with: repositoryUrl;
                                 perform: #'package:' with: 'ConfigurationOfMetacello';
-                                perform: #'load' ].
+                                perform: #'load' ] ].
                     version := (Smalltalk at: #'ConfigurationOfMetacello') project version: '1.0-beta.32'.	"bootstrap with 1.0-beta.32"
-                    retry
-                        ifTrue: [ 
-                            "on retry, use #repositoryOverrides:"
-                            version
-                                repositoryOverrides:
-                                    (Array with: (MCHttpRepository location: repositoryUrl user: '' password: '')) ].
                     version load: loadList.
-                    gofer := (Smalltalk at: #'Gofer') new.
-                    Smalltalk
+                    MetacelloBuilderTravisCI retry: [
+                      gofer := (Smalltalk at: #'Gofer') new.
+                      Smalltalk
                         at: #'ConfigurationOfMetacelloPreview'
                         ifAbsent: [ 
                             gofer
                                 perform: #'url:' with: repositoryUrl;
                                 perform: #'package:' with: 'ConfigurationOfMetacelloPreview';
-                                perform: #'load' ].
+                                perform: #'load' ] ].
                     version := (Smalltalk at: #'ConfigurationOfMetacelloPreview') project version: '1.0.0-beta.32.2'.	"load latest from GitHub"
                     version load: loadList.
-                    ^ self ]
-                        on: Error
-                        do: [ :ex | 
-                            error := ex.
-                            Transcript
-                                cr;
-                                show: 'failed ensureMetacello: ';
-                                show: ex description printString;
-                                show: '...retrying'.	"try again"
-                            retry := true.
-                            ex return: nil ] ].	"shouldn't get here unless the load failed ... throw an error"
-            self error: 'retry with alternate repository failed: ' , error description printString ]! !
+                    ^ self ].	
+            "shouldn't get here unless the load failed ... throw an error"
+            self error: 'retry with alternate repository failed: ']! !
 
 
 Object subclass: #Metacello

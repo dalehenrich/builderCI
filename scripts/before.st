@@ -24,6 +24,7 @@ transcriptFileName := 'TravisTranscript.txt'.
     transcriptStream := fileDirectoryClass default newFileNamed: transcriptFileName ].
 
 fileInBlock value: 'FileStream-show.st'.
+fileInBlock value: 'MetacelloBuilderTravisCI.st'.
 
 Smalltalk at: #TravisResultFileBlock put: resultFileBlock.
 Smalltalk at: #OLDTranscript put: Transcript.

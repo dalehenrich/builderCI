@@ -11,9 +11,11 @@ repository := (MCCacheRepository default includesVersionNamed: filename )
 		location: repoUrl
 		user: ''
 		password: ''].
-repository
-	versionReaderForFileNamed:  filename, '.mcz'
-	do: [:reader | 
-		version := reader version.
-		version load.
-		version workingCopy repositoryGroup addRepository: repository]
+MetacelloBuilderTravisCI
+  retry: [
+    repository
+	    versionReaderForFileNamed:  filename, '.mcz'
+	    do: [:reader | 
+		    version := reader version.
+		    version load.
+		    version workingCopy repositoryGroup addRepository: repository ]]

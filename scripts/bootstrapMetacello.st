@@ -1,14 +1,4 @@
-| fileInBlock |
 Transcript cr; show: 'travis---->bootstrapMetacello.st'.
-
-(Smalltalk at: #FileDirectory ifAbsent: [])
-  ifNil: [ 
-    fileInBlock := [:fileName | ((Smalltalk at: #FileSystem) workingDirectory / fileName)
-      readStreamDo: [:fileStream | fileStream fileIn ] ] ]
-  ifNotNil: [:fileDirectoryClass | 
-    fileInBlock := [:fileName | fileDirectoryClass default 
-      fileNamed: fileName
-      do: [:fileStream | fileStream fileIn ] ] ].
 
 "Bootstrap Metacello-Base to simulate conditions when it's included in base images"
 (Smalltalk
@@ -16,18 +6,20 @@ Transcript cr; show: 'travis---->bootstrapMetacello.st'.
   ifAbsent: []) 
     ifNil: [
       "Metacello not pre-installed install Metacello-Base"
-      fileInBlock value: 'Metacello-Base.st'.
+      MetacelloBuilderTravisCI fileIn: 'Metacello-Base.st'.
 
       "ensure that Gofer is available on Squeak"
-      (Smalltalk at: #ConfigurationOf) 
-        ensureGoferVersion: 'Gofer-Core-lr.115' 
-        repositoryUrl: 'http://seaside.gemstone.com/ss/metacello'. ]
+      MetacelloBuilderTravisCI retry: [
+        (Smalltalk at: #ConfigurationOf) 
+          ensureGoferVersion: 'Gofer-Core-lr.115' 
+          repositoryUrl: 'http://seaside.gemstone.com/ss/metacello'. ]]
     ifNotNil: [
       "Metacello already installed, install Preview".
-      (Smalltalk at: #Gofer) new
-        gemsource: 'metacello';
-        package: 'ConfigurationOfMetacello';
-        load.
+      MetacelloBuilderTravisCI retry: [
+        (Smalltalk at: #Gofer) new
+          gemsource: 'metacello';
+          package: 'ConfigurationOfMetacello';
+          load ].
       ((Smalltalk at: #ConfigurationOfMetacello) project 
         version: '1.0-beta.32') load.
       (Smalltalk at: #Metacello) new
