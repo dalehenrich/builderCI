@@ -50,12 +50,12 @@ At the beginning of the run, everything written to the **Transcript** is routed 
    - cat TravisTranscript.txt
 ```
 
-or conditionally dump the *TravisTranscript.txt* file upon an error:
+or conditionally dump the *TravisTranscript.txt* file upon an error or
+test failure:
 
 ```yml
-   - if ( test -e PharoDebug.log ); then cat TravisTranscript.txt; fi
-   - if ( test -e PharoDebug.log ); then cat PharoDebug.log; fi
-   - if ( test -e PharoDebug.log ); then die; fi
+   - $BUILDER_CI_HOME/buildImageErrorCheck.sh
+   - $BUILDER_CI_HOME/buildTravisStatusCheck.sh
 ```
 
 ## Projects using TravisCi and builderCI
@@ -72,4 +72,3 @@ or conditionally dump the *TravisTranscript.txt* file upon an error:
 [2]: https://github.com/dalehenrich/builderCI/blob/master/templates/travisCI.st
 [3]: https://github.com/dalehenrich/metacello-work/blob/master/README.md
 [4]: http://travis-ci.org/#!/dalehenrich/sample/jobs/1647159
-

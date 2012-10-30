@@ -1,7 +1,7 @@
-| repository version |
+| repository version repoUrl filename |
 Transcript cr; show: 'travis---->bootstrapGofer.st'.
 
-Smalltalk at: #Gofer ifPresent: [ ^self ].
+Smalltalk at: #Gofer ifPresent: [:ignored | ^self ].
 
 repoUrl := 'http://seaside.gemstone.com/ss/metacello'.
 filename := 'Gofer-Core-lr.115'.
