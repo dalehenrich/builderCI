@@ -63,6 +63,7 @@ test failure:
 * [Metacello](https://github.com/dalehenrich/metacello-work)
 * [FileTree](https://github.com/dalehenrich/filetree)
 * [Ston](https://github.com/dalehenrich/ston)
+* [Control](https://github.com/frankshearar/Control)
 
 ### Travis CI results
 
