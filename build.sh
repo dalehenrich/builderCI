@@ -181,17 +181,21 @@ for FILE in "${SCRIPTS[@]}" ; do
 	echo "!" >> "$OUTPUT_SCRIPT"
 done
 
+#feedback about system being used ... 64 bit  vms created headaches
+uname -a
+
 echo "RUNNING TESTS..."
 
 # build image in the background
 exec "$PHARO_VM" $PHARO_PARAM "$OUTPUT_IMAGE" "$OUTPUT_SCRIPT" &
+pid="$!"
 
 # wait for the process to terminate, or a debug log
-if [ $! ] ; then
-	while kill -0 $! 2> /dev/null ; do
+if [ $pid ] ; then
+	while kill -0 $pid 2> /dev/null ; do
 		if [ -f "$OUTPUT_DUMP" ] || [ -f "$OUTPUT_DEBUG" ] ; then
 			sleep 5
-			kill -s SIGKILL $! 2> /dev/null
+			kill -s SIGKILL $pid 2> /dev/null
 			if [ -f "$OUTPUT_DUMP" ] ; then
 				echo "$(basename $0): VM aborted ($PHARO_VM)"
 			#	cat "$OUTPUT_DUMP" | tr '\r' '\n' | sed 's/^/  /'
@@ -203,11 +207,17 @@ if [ $! ] ; then
 		fi
 		sleep 1
 	done
+        wait $pid || exitStatus+=1
+        echo "VM exit status: $exitStatus " 
+        if [ "$exitStatus" != "0" ] ; then
+          echo "$(basename $0): error starting VM ($PHARO_VM) ... reminder 64bit vms don't support 32 bit executables"
+          touch FAILED_VM_EXECUTION
+          exit 1
+        fi
 else
 	echo "$(basename $0): unable to start VM ($PHARO_VM)"
 	exit 1
 fi
-
 # remove cache link
 rm -rf "$OUTPUT_CACHE" "$OUTPUT_ZIP"
 (
