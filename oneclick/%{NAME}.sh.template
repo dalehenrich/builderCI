@@ -2,7 +2,11 @@
 
 # path
 ROOT=`readlink -f $(dirname $0)`
-LINUX="$ROOT/Contents/Linux"
+if [ "$(uname)" == "x86_64" ]; then
+   LINUX="$ROOT/Contents/Linux-x86_64"
+else
+   LINUX="$ROOT/Contents/Linux"
+fi
 RESOURCES="$ROOT/Contents/Resources"
 
 # icon (note: gvfs-set-attribute is found in gvfs-bin on Ubuntu
