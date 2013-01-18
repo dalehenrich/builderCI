@@ -198,21 +198,22 @@ if [ $pid ] ; then
 			kill -s SIGKILL $pid 2> /dev/null
 			if [ -f "$OUTPUT_DUMP" ] ; then
 				echo "$(basename $0): VM aborted ($PHARO_VM)"
-			#	cat "$OUTPUT_DUMP" | tr '\r' '\n' | sed 's/^/  /'
+				cat "$OUTPUT_DUMP" | tr '\r' '\n' | sed 's/^/  /'
+				exit 1
 			elif [ -f "$OUTPUT_DEBUG" ] ; then
 				echo "$(basename $0): Execution aborted ($PHARO_VM)"
 			#	cat "$OUTPUT_DEBUG" | tr '\r' '\n' | sed 's/^/  /'
+				exit 0
 			fi
-			exit 0
 		fi
 		sleep 1
 	done
-        wait $pid || exitStatus+=1
+        wait $pid
+        exitStatus=$?
         echo "VM exit status: $exitStatus " 
-        if [ "$exitStatus" != "0" ] ; then
-          echo "$(basename $0): error starting VM ($PHARO_VM) ... reminder 64bit vms don't support 32 bit executables"
-          touch FAILED_VM_EXECUTION
-          exit 1
+        if [[ "$exitStatus" != "0" ]] ; then
+          echo "$(basename $0): error during VM execution ($PHARO_VM) "
+          exit $exitStatus
         fi
 else
 	echo "$(basename $0): unable to start VM ($PHARO_VM)"
