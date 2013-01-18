@@ -2,7 +2,7 @@
 
 # path
 ROOT=`readlink -f $(dirname $0)`
-if [ "$(uname)" == "x86_64" ]; then
+if [ "$(uname -m)" == "x86_64" ]; then
    LINUX="$ROOT/Contents/Linux-x86_64"
 else
    LINUX="$ROOT/Contents/Linux"
