@@ -14,7 +14,7 @@ env:
 install:
    - export PROJECT_HOME="$(pwd)"
    - cd $HOME
-   - wget -O builderCI.zip https://github.com/dalehenrich/builderCI/zipball/master
+   - wget -q -O builderCI.zip https://github.com/dalehenrich/builderCI/zipball/master
    - unzip -q builderCI.zip
    - cd dalehenrich-builderCI*
    - source build_env_vars
@@ -22,4 +22,4 @@ install:
    - ./build_image.sh
 
 # use a different script if you want to customize how travis tests are run
-script: ./testTravis.sh
+script: $BUILDER_CI_HOME/testTravisCI.sh
