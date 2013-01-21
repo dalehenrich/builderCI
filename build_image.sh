@@ -18,7 +18,7 @@ case "$(uname -m)" in
                 sudo apt-get -qq install libc6:i386
                 ;;
         *)
-                echo "32 vit os"
+                echo "32bit os"
                 ;;
 esac
 
@@ -83,6 +83,21 @@ case "$ST" in
     ;;
   # Squeak-4.4
   Squeak-4.4)
+    cd $IMAGES_PATH
+    wget -q http://ftp.squeak.org/4.4/Squeak4.4-12327.zip
+    mkdir -p Squeak4.4
+    unzip Squeak4.4-12327.zip
+    # 4.3 stores things in a Squeak4.3 directory. 4.4 doesn't.
+    # So we mimic the behaviour of 4.3.
+    mv Squeak4.4-12327.changes Squeak4.4/Squeak4.4-12327.changes
+    mv Squeak4.4-12327.image Squeak4.4/Squeak4.4-12327.image
+    cd Squeak4.4
+    wget -q http://ftp.squeak.org/4.4/SqueakV41.sources.gz
+    gunzip SqueakV41.sources.gz
+    IMAGE_BASE_NAME=Squeak4.4-12327
+    ;;
+  # Squeak-4.5
+  Squeak-4.5)
     cd $IMAGES_PATH
     wget -q http://www.squeakci.org/job/SqueakTrunk/lastSuccessfulBuild/artifact/target/*zip*/target.zip
     unzip target.zip

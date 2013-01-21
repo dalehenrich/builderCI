@@ -15,6 +15,7 @@ env:
 #   - ST=Squeak4.3 # ensure that obsolete platform name Squeak4.3 works
    - ST=Squeak-4.3
    - ST=Squeak-4.4
+   - ST=Squeak-4.5
 
 install:
    - export PROJECT_HOME="$(pwd)"
