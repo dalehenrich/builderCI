@@ -14,7 +14,7 @@ env:
 #   - ST=Pharo-2.0 #Pharo-2.0 has trouble loading Metacello (FileTree issues)
    - ST=Squeak-4.3
    - ST=Squeak-4.4
-#   - ST=Squeak-4.5 #see https://github.com/dalehenrich/builderCI/issues/41 for details
+   - ST=Squeak-4.5
    - ST=GemStone-2.4.4.1
    - ST=GemStone-2.4.4.7
    - ST=GemStone-2.4.5

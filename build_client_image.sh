@@ -16,7 +16,7 @@ case "$(uname -m)" in
         "x86_64")
                 echo "64bit os"
                 # 32-bit VM
-                sudo apt-get -qq install libc6:i386   
+                sudo apt-get -qq install libc6:i386
                 # UUIDPlugin
                 sudo apt-get -qq install libuuid1:i386
                 # SqueakSSL
@@ -104,7 +104,7 @@ case "$ST" in
   # Squeak-4.5
   Squeak-4.5)
     cd $IMAGES_PATH
-    wget -q http://www.squeakci.org/job/SqueakTrunk/lastSuccessfulBuild/artifact/target/*zip*/target.zip
+    wget -q http://build.squeak.org/job/SqueakTrunk/lastSuccessfulBuild/artifact/target/*zip*/target.zip
     unzip target.zip
     cd target
     wget -q http://ftp.squeak.org/4.1/SqueakV41.sources.gz
