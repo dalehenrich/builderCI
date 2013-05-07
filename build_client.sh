@@ -32,6 +32,11 @@ case "$(uname -s)" in
 		exit 1
 		;;
 esac
+if [ -f "$IMAGES_PATH/pharo" ] ; then
+	# Use Pharo generic script to run the VM (since Pharo2)
+    PHARO_VM="$IMAGES_PATH/pharo"
+    PHARO_PARAM=
+fi
 
 # build configuration
 BEFORE_SCRIPTS=("$SCRIPTS_PATH/before.st")
