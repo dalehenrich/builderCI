@@ -39,14 +39,14 @@ case "$ST" in
   # PharoCore-1.0
   PharoCore-1.0)
     cd $IMAGES_PATH
-    wget -q https://gforge.inria.fr/frs/download.php/26832/PharoCore-1.0.zip
+    wget -q http://files.pharo.org/image/10/latest.zip
     unzip PharoCore-1.0.zip
     cd PharoCore-1.0
   ;;
   # PharoCore-1.1
   PharoCore-1.1)
     cd $IMAGES_PATH
-    wget -q https://gforge.inria.fr/frs/download.php/28341/PharoCore-1.1.2.zip
+    wget -q http://files.pharo.org/image/11/latest.zip
     unzip PharoCore-1.1.2.zip
     cd PharoCore-1.1.2
     IMAGE_BASE_NAME=PharoCore-1.1.2-11422
@@ -54,7 +54,7 @@ case "$ST" in
   # PharoCore-1.2
   PharoCore-1.2)
     cd $IMAGES_PATH
-    wget -q https://gforge.inria.fr/frs/download.php/28553/PharoCore-1.2.2-12353.zip
+    wget -q http://files.pharo.org/image/12/latest.zip
     unzip PharoCore-1.2.2-12353
     cd PharoCore-1.2.2-12353
     IMAGE_BASE_NAME=PharoCore-1.2.2-12353
@@ -62,14 +62,14 @@ case "$ST" in
   # PharoCore-1.3
   PharoCore-1.3)
     cd $IMAGES_PATH
-    wget -q https://gforge.inria.fr/frs/download.php/30567/PharoCore-1.3-13328.zip
+    wget -q http://files.pharo.org/image/13/latest.zip
     unzip PharoCore-1.3-13328.zip
     cd PharoCore-1.3
   ;;
   # Pharo-1.4
   Pharo-1.4)
     cd $IMAGES_PATH
-    wget -q https://gforge.inria.fr/frs/download.php/31259/Pharo-1.4-14557.zip
+    wget -q http://files.pharo.org/image/14/latest.zip
     unzip Pharo-1.4-14557
     cd Pharo-1.4
   ;;
