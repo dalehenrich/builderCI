@@ -95,6 +95,17 @@ case "$ST" in
     mv pharo ..
     mv pharo-vm ..
   ;;
+  # Pharo-4.0
+  Pharo-4.0)
+    cd $IMAGES_PATH
+    mkdir Pharo-4.0
+    cd Pharo-4.0
+    wget --quiet -O - get.pharo.org/40+vm | bash
+    IMAGE_BASE_NAME=Pharo
+    # move VM to $IMAGES_PATH 
+    mv pharo ..
+    mv pharo-vm ..
+  ;;
   # Squeak-4.3 ... allow Squeak4.3 for backwards compatibility
   Squeak-4.3|Squeak4.3)
     cd $IMAGES_PATH
