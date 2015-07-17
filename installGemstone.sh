@@ -110,7 +110,7 @@ machine_name="`uname -n`"
 echo "[Info] Starting installation of $gsvers on $machine_name"
 
 # Do a trivial sudo to test we can and get the password prompt out of the way
-sudo date
+# sudo date
 
 echo "[Info] Setting up shared memory"
 # Ref: http://developer.postgresql.org/pgdocs/postgres/kernel-resources.html
@@ -165,8 +165,8 @@ shmallNewMB=$(($shmallNew / 256))
 # Increase shmmax if appropriate
 if [ $shmmaxNew -gt $shmmax ]; then
     echo "[Info] Increasing max shared memory segment size to $shmmaxNewMB MB"
-    [ $PLATFORM = "Darwin-i386" ] && sudo sysctl -w kern.sysv.shmmax=$shmmaxNew
-    [ $PLATFORM = "Linux-x86_64" ] && sudo bash -c "echo $shmmaxNew > /proc/sys/kernel/shmmax"
+    [ $PLATFORM = "Darwin-i386" ] && sysctl -w kern.sysv.shmmax=$shmmaxNew
+    [ $PLATFORM = "Linux-x86_64" ] && bash -c "echo $shmmaxNew > /proc/sys/kernel/shmmax"
 else
     echo "[Info] No need to increase max shared memory segment size"
 fi
@@ -174,8 +174,8 @@ fi
 # Increase shmall if appropriate
 if [ $shmallNew -gt $shmall ]; then
     echo "[Info] Increasing max shared memory allowed to $shmallNewMB MB"
-    [ $PLATFORM = "Darwin-i386" ] && sudo sysctl -w kern.sysv.shmall=$shmallNew
-    [ $PLATFORM = "Linux-x86_64" ] && sudo bash -c "echo $shmallNew > /proc/sys/kernel/shmall"
+    [ $PLATFORM = "Darwin-i386" ] && sysctl -w kern.sysv.shmall=$shmallNew
+    [ $PLATFORM = "Linux-x86_64" ] && bash -c "echo $shmallNew > /proc/sys/kernel/shmall"
 else
     echo "[Info] No need to increase max shared memory allowed"
 fi
@@ -204,7 +204,7 @@ if [[ ! -f /etc/sysctl.conf || `grep -sc "kern.*.shm" /etc/sysctl.conf` -eq 0 ]]
     #
     echo "[Info] Adding the following section to /etc/sysctl.conf"
     cat /tmp/sysctl.conf.$$
-    sudo bash -c "cat /tmp/sysctl.conf.$$ >> /etc/sysctl.conf"
+    bash -c "cat /tmp/sysctl.conf.$$ >> /etc/sysctl.conf"
     /bin/rm -f /tmp/sysctl.conf.$$
 else
     echo "[Info] The following shared memory settings already exist in /etc/sysctl.conf"
@@ -216,7 +216,7 @@ fi
 echo "[Info] Setting up GemStone netldi service port"
 if [ `grep -sc "^gs64ldi" /etc/services` -eq 0 ]; then
     echo '[Info] Adding "gs64ldi  50377/tcp" to /etc/services'
-    sudo bash -c 'echo "gs64ldi         50377/tcp        # Gemstone netldi"  >> /etc/services'
+    bash -c 'echo "gs64ldi         50377/tcp        # Gemstone netldi"  >> /etc/services'
 else
     echo "[Info] GemStone netldi service port is already set in /etc/services"
     echo "To change it, remove the following line from /etc/services and rerun this script"
@@ -244,9 +244,9 @@ fi
 echo "[Info] Creating /opt/gemstone directory"
 if [ ! -e /opt/gemstone ]
     then
-    sudo mkdir -p /opt/gemstone /opt/gemstone/log /opt/gemstone/locks
-    sudo chown $USER:${GROUPS[0]} /opt/gemstone /opt/gemstone/log /opt/gemstone/locks
-    sudo chmod 770 /opt/gemstone /opt/gemstone/log /opt/gemstone/locks
+    mkdir -p /opt/gemstone /opt/gemstone/log /opt/gemstone/locks
+    chown $USER:${GROUPS[0]} /opt/gemstone /opt/gemstone/log /opt/gemstone/locks
+    chmod 770 /opt/gemstone /opt/gemstone/log /opt/gemstone/locks
 else
     echo "[Warning] /opt/gemstone directory already exists"
     echo "to replace it, remove or rename it and rerun this script"

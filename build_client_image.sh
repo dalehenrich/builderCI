@@ -11,33 +11,34 @@
 #
 
 set -e # exit on error
-#install 32 bit libs if necessary
-case "$(uname -m)" in
-        "x86_64")
-                echo "64bit os"
-                # 32-bit VM
-                sudo apt-get -qq update
-                sudo apt-get -qq install libc6:i386
-                # UUIDPlugin
-                sudo apt-get -qq install libuuid1:i386
-                # SqueakSSL
-                sudo apt-get -qq install libkrb5-3:i386 libk5crypto3:i386 zlib1g:i386 libcomerr2:i386 libkrb5support0:i386 libkeyutils1:i386
-                
-                case "$ST" in
-                    Squeak*|Pharo*)
-                      sudo apt-get -qq install libx11-6:i386 libgl1-mesa-swx11:i386 libsm6:i386
-                esac
-                case "$ST" in
-                    Pharo*)
-                      sudo apt-get -qq install libssl1.0.0:i386
-                      # libFT2Plugin
-                      sudo apt-get -qq install libfreetype6
-                esac
-                ;;
-        *)
-                echo "32bit os"
-                ;;
-esac
+
+if [ -z "$TRAVIS_CONTAINER" ]; then
+  #install 32 bit libs if necessary
+  case "$(uname -m)" in
+    "x86_64")
+      echo "64bit os"
+      # 32-bit VM
+      sudo apt-get -qq update
+      sudo apt-get -qq install libc6:i386
+      # UUIDPlugin
+      sudo apt-get -qq install libuuid1:i386
+      
+      case "$ST" in
+          Squeak*|Pharo*)
+            sudo apt-get -qq install libx11-6:i386 libgl1-mesa-swx11:i386 libsm6:i386
+      esac
+      case "$ST" in
+          Pharo*)
+            sudo apt-get -qq install libssl1.0.0:i386
+            # libFT2Plugin
+            sudo apt-get -qq install libfreetype6
+      esac
+      ;;
+    *)
+      echo "32bit os"
+      ;;
+  esac
+fi
 
 IMAGE_BASE_NAME=$ST
 IMAGE_TARGET_NAME=$ST
