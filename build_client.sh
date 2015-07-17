@@ -15,7 +15,7 @@ set -e # exit on error
 # vm configuration
 case "$(uname -s)" in
 	"Linux")
-		PHARO_VM="$VM_PATH/Linux/squeak"
+		PHARO_VM="$VM_PATH/coglinux/bin/squeak"
 		PHARO_PARAM="-nosound \
         -plugins "$VM_PATH/Linux" \
 	    -encoding latin1 \
@@ -219,7 +219,8 @@ echo "RUNNING TESTS..."
 # build image in the background
 echo "$(ls -lisa "$PHARO_VM")"
 echo "$(pwd)"
-"$PHARO_VM" $PHARO_PARAM "$OUTPUT_IMAGE" "$OUTPUT_SCRIPT" &
+chmod +x "$PHARO_VM"
+exec "$PHARO_VM" $PHARO_PARAM "$OUTPUT_IMAGE" "$OUTPUT_SCRIPT" &
 pid="$!"
 
 # wait for the process to terminate, or a debug log
