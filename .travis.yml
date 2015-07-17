@@ -14,17 +14,13 @@ notifications:
     on_failure: always  # options: [always|never|change] default: always
     on_start: false     # default: false
 
-before_install:
-  - echo "$(pwd)"
-  - ls -lisaR
-
 env:
    global:
       - TRAVIS_CONTAINER=true
    matrix:
-     # - ST=Pharo-5.0
+     - ST=Pharo-5.0
      - ST=Squeak-Trunk #SCREENSHOT=60
-     # - ST=GemStone-3.2.4
+     - ST=GemStone-3.2.4
 
      # - ST=PharoCore-1.1
      # - ST=PharoCore-1.2
