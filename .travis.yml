@@ -60,7 +60,7 @@ addons:
     # 32-bit VM
     - libc6:i386
     # 32-bit gci libs
-    - ia32-libs
+    # - ia32-libs
     # UUIDPlugin
     - libuuid1:i386
     # Display
@@ -69,8 +69,6 @@ addons:
     - libsm6:i386
     # libFT2Plugin
     - libfreetype6
-    # Debug
-    - netcat
 
 install:
    - export PROJECT_HOME="$(pwd)"
