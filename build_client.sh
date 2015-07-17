@@ -217,8 +217,9 @@ uname -a
 echo "RUNNING TESTS..."
 
 # build image in the background
-chmod +x "$PHARO_VM"
-exec "$PHARO_VM" $PHARO_PARAM "$OUTPUT_IMAGE" "$OUTPUT_SCRIPT" &
+echo "$(ls -lisa "$PHARO_VM")"
+echo "$(pwd)"
+"$PHARO_VM" $PHARO_PARAM "$OUTPUT_IMAGE" "$OUTPUT_SCRIPT" &
 pid="$!"
 
 # wait for the process to terminate, or a debug log
