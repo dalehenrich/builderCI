@@ -21,7 +21,7 @@ case "$(uname -m)" in
                 # UUIDPlugin
                 sudo apt-get -qq install libuuid1:i386
                 # SqueakSSL
-                sudo apt-get -qq install libkrb5-3:i386 libk5crypto3:i386 zlib1g:i386 libcomerr2:i386 libkrb5support0:i386 libkeyutils1:i386 librt
+                sudo apt-get -qq install libkrb5-3:i386 libk5crypto3:i386 zlib1g:i386 libcomerr2:i386 libkrb5support0:i386 libkeyutils1:i386
                 
                 case "$ST" in
                     Squeak*|Pharo*)
