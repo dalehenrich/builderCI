@@ -157,7 +157,7 @@ case "$ST" in
     cd $IMAGES_PATH
     # 4.3 stores things in a Squeak4.3 directory. 5.0 doesn't.
     # So we mimic the behaviour of 4.3.
-    mkdir -p Squeak4.0
+    mkdir -p Squeak5.0
     cd Squeak5.0
     wget http://ftp.squeak.org/5.0/Squeak45.0-15113.zip
     unzip Squeak5.0-15113.zip
