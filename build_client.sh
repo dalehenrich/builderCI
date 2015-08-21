@@ -43,7 +43,7 @@ fi
 
 if [ $ST == "Squeak-5.0" ] ; then
   #squeak 5 needs spur so change the VMPATH and change the paths
-    VM_PATH = "$BASE_PATH/spur-oneclick/Contents";
+    VM_PATH="$BASE_PATH/spur-oneclick/Contents";
     case "$(uname -s)" in
 	"Linux") #we assume travis won't use ARM..........
 		PHARO_VM="$VM_PATH/LinuxAndWindows/Linux-i686/squeak"
