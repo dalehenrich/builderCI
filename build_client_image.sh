@@ -152,6 +152,20 @@ case "$ST" in
     IMAGE_BASE_NAME=Squeak4.6-15102
     mv *.sources $SOURCES_PATH
     ;;
+  # Squeak-5.0
+  Squeak-5.0)
+    cd $IMAGES_PATH
+    # 4.3 stores things in a Squeak4.3 directory. 5.0 doesn't.
+    # So we mimic the behaviour of 4.3.
+    mkdir -p Squeak4.0
+    cd Squeak5.0
+    wget http://ftp.squeak.org/5.0/Squeak45.0-15113.zip
+    unzip Squeak5.0-15113.zip
+    wget http://ftp.squeak.org/sources_files/SqueakV50.sources.gz
+    gunzip SqueakV50.sources.gz
+    IMAGE_BASE_NAME=Squeak5.0-15113
+    mv *.sources $SOURCES_PATH
+    ;;
   # Squeak-Trunk
   Squeak-Trunk)
     cd $IMAGES_PATH
