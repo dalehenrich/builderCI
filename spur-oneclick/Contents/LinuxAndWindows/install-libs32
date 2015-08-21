@@ -1,0 +1,6 @@
+echo adding 32-bit libraries to support Smalltalk VM
+# the following should allow 32-bit Squeak VM to run on Ubuntu 14.04 LTS 64-bit
+sudo dpkg --add-architecture i386
+sudo apt-get update
+sudo apt-get install libc6:i386 lib32z1 lib32ncurses5 lib32bz2-1.0 libX11-6:i386 libice6:i386 libgl1-mesa-dri-lts-utopic:i386 libgl1-mesa-glx-lts-utopic:i386 libsm6:i386
+
