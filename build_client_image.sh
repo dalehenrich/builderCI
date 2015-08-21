@@ -159,7 +159,7 @@ case "$ST" in
     # So we mimic the behaviour of 4.3.
     mkdir -p Squeak5.0
     cd Squeak5.0
-    wget http://ftp.squeak.org/5.0/Squeak45.0-15113.zip
+    wget http://ftp.squeak.org/5.0/Squeak5.0-15113.zip
     unzip Squeak5.0-15113.zip
     wget http://ftp.squeak.org/sources_files/SqueakV50.sources.gz
     gunzip SqueakV50.sources.gz
