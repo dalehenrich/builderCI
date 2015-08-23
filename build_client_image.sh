@@ -26,7 +26,7 @@ case "$(uname -m)" in
                 case "$ST" in
                     Squeak*|Pharo*)
                       sudo apt-get -qq install libx11-6:i386 libgl1-mesa-swx11:i386 libsm6:i386 libssl1.0.0:i386
-                      sudo ln -s /lib/i386-linux-gnu/libcrypto.so.1.0.0 /lib/i386-linux-gnu/libcrypto.so.10
+                      sudo ln -s /lib/i386-linux-gnu/libcrypto.so.1.0.0 /lib/i386-linux-gnu/libcrypto.so.10           sudo ln -s /lib/i386-linux-gnu/libssl.so.1.0.0 /lib/i386-linux-gnu/libssl.so.10
                 esac
                 case "$ST" in
                     Pharo*)
