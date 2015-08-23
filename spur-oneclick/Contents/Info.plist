@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>BuildMachineOSBuild</key>
+	<string>10K549</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>English</string>
 	<key>CFBundleDocumentTypes</key>
@@ -346,139 +348,85 @@
 			<key>CFBundleTypeRole</key>
 			<string>Viewer</string>
 		</dict>
-	</array>
-	<key>UTExportedTypeDeclarations</key>
-	<array>
 		<dict>
-			<key>UTTypeConformsTo</key>
+			<key>CFBundleTypeExtensions</key>
 			<array>
-				<string>public.data</string>
+				<string>bundle</string>
 			</array>
-			<key>UTTypeDescription</key>
-			<string>Squeak Image File</string>
-			<key>UTTypeIdentifier</key>
-			<string>org.squeak.image</string>
-			<key>UTTypeTagSpecification</key>
-			<dict>
-				<key>com.apple.ostype</key>
-				<string>STim</string>
-				<key>public.filename-extension</key>
-				<array>
-					<string>image</string>
-				</array>
-				<key>public.mime-type</key>
-				<string>application/squeak-image</string>
-			</dict>
-		</dict>
-		<dict>
-			<key>UTTypeConformsTo</key>
+			<key>CFBundleTypeIconFile</key>
+			<string>SqueakPlugin.icns</string>
+			<key>CFBundleTypeName</key>
+			<string>Squeak Plugin</string>
+			<key>CFBundleTypeOSTypes</key>
 			<array>
-				<string>public.utf8-plain-text</string>
+				<string>BNDL</string>
 			</array>
-			<key>UTTypeDescription</key>
-			<string>Squeak Sources File</string>
-			<key>UTTypeIdentifier</key>
-			<string>org.squeak.sources</string>
-			<key>UTTypeTagSpecification</key>
-			<dict>
-				<key>com.apple.ostype</key>
-				<string>STso</string>
-				<key>public.filename-extension</key>
-				<array>
-					<string>sources</string>
-				</array>
-				<key>public.mime-type</key>
-				<string>application/squeak-sources</string>
-			</dict>
-		</dict>
-		<dict>
-			<key>UTTypeConformsTo</key>
-			<array>
-				<string>public.utf8-plain-text</string>
-			</array>
-			<key>UTTypeDescription</key>
-			<string>Squeak Changes File</string>
-			<key>UTTypeIdentifier</key>
-			<string>org.squeak.changes</string>
-			<key>UTTypeTagSpecification</key>
-			<dict>
-				<key>com.apple.ostype</key>
-				<string>STch</string>
-				<key>public.filename-extension</key>
-				<array>
-					<string>changes</string>
-				</array>
-				<key>public.mime-type</key>
-				<string>application/squeak-changes</string>
-			</dict>
-		</dict>
-		<dict>
-			<key>UTTypeConformsTo</key>
-			<array>
-				<string>public.data</string>
-			</array>
-			<key>UTTypeDescription</key>
-			<string>Squeak Script File</string>
-			<key>UTTypeIdentifier</key>
-			<string>org.squeak.script</string>
-			<key>UTTypeTagSpecification</key>
-			<dict>
-				<key>com.apple.ostype</key>
-				<string>SOBJ</string>
-				<key>public.filename-extension</key>
-				<array>
-					<string>sobj</string>
-				</array>
-				<key>public.mime-type</key>
-				<string>application/squeak-script</string>
-			</dict>
-		</dict>
-		<dict>
-			<key>UTTypeConformsTo</key>
-			<array>
-				<string>public.data</string>
-			</array>
-			<key>UTTypeDescription</key>
-			<string>Squeak Project File</string>
-			<key>UTTypeIdentifier</key>
-			<string>org.squeak.project</string>
-			<key>UTTypeTagSpecification</key>
-			<dict>
-				<key>com.apple.ostype</key>
-				<string>STpr</string>
-				<key>public.filename-extension</key>
-				<array>
-					<string>pr</string>
-				</array>
-				<key>public.mime-type</key>
-				<string>application/x-squeak-project</string>
-			</dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
 		</dict>
 	</array>
 	<key>CFBundleExecutable</key>
 	<string>Squeak</string>
 	<key>CFBundleGetInfoString</key>
-	<string>Squeak 5.0, SpurVM 5.0-3397</string>
-	<key>CFBundleShortVersionString</key>
-	<string>5.0</string>
+	<string>Squeak Cog Spur 5.0.3427 http://www.mirandabanda.org</string>
 	<key>CFBundleIconFile</key>
-	<string>Squeak.icns</string>
+	<string>GreenCogSqueak.icns</string>
 	<key>CFBundleIdentifier</key>
-	<string>org.squeak.SqueakAllInOne45</string>
+	<string>com.squeak.Cog</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>Squeak 5.0</string>
+	<string>Squeak</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
+	<key>CFBundleShortVersionString</key>
+	<string>Squeak Cog Spur 5.0.3427</string>
 	<key>CFBundleSignature</key>
-	<string>FAST</string>
+	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>1</string>
+	<string>5.0.3427</string>
 	<key>CGDisableCoalescedUpdates</key>
 	<true/>
+	<key>DTCompiler</key>
+	<string></string>
+	<key>DTPlatformBuild</key>
+	<string>10M2518</string>
+	<key>DTPlatformVersion</key>
+	<string>PG</string>
+	<key>DTSDKBuild</key>
+	<string>9L31a</string>
+	<key>DTSDKName</key>
+	<string>macosx10.5</string>
+	<key>DTXcode</key>
+	<string>0400</string>
+	<key>DTXcodeBuild</key>
+	<string>10M2518</string>
 	<key>LSBackgroundOnly</key>
 	<false/>
+	<key>LSMinimumSystemVersion</key>
+	<string>10.5.0</string>
+	<key>NSServices</key>
+	<array>
+		<dict>
+			<key>NSMenuItem</key>
+			<dict>
+				<key>default</key>
+				<string>Squeak DoIt</string>
+			</dict>
+			<key>NSMessage</key>
+			<string>doitandreturn</string>
+			<key>NSPortName</key>
+			<string>Squeak</string>
+			<key>NSReturnTypes</key>
+			<array>
+				<string>NSStringPboardType</string>
+			</array>
+			<key>NSSendTypes</key>
+			<array>
+				<string>NSStringPboardType</string>
+			</array>
+		</dict>
+	</array>
 	<key>SqueakBrowserMouseCmdButton1</key>
 	<integer>3</integer>
 	<key>SqueakBrowserMouseCmdButton2</key>
@@ -511,8 +459,10 @@
 	<false/>
 	<key>SqueakFloatingWindowGetsFocus</key>
 	<true/>
+	<key>SqueakHasQuitWithoutSaving</key>
+	<false/>
 	<key>SqueakImageName</key>
-	<string>Squeak5.0-15113.image</string>
+	<string>Squeak.image</string>
 	<key>SqueakMaxHeapSize</key>
 	<integer>536870912</integer>
 	<key>SqueakMouseCmdButton1</key>
@@ -540,11 +490,7 @@
 	<key>SqueakMouseOptionButton3</key>
 	<integer>2</integer>
 	<key>SqueakPluginsBuiltInOrLocalOnly</key>
-	<true/>
-	<key>SqueakQuitOnQuitAppleEvent</key>
 	<false/>
-	<key>SqueakTrustedDirectory</key>
-	<string>/foobar/tooBar/forSqueak/bogus/</string>
 	<key>SqueakUIFlushPrimaryDeferNMilliseconds</key>
 	<integer>20</integer>
 	<key>SqueakUIFlushSecondaryCheckForPossibleNeedEveryNMilliseconds</key>
@@ -552,11 +498,13 @@
 	<key>SqueakUIFlushSecondaryCleanupDelayMilliseconds</key>
 	<integer>25</integer>
 	<key>SqueakUIFlushUseHighPercisionClock</key>
-	<false/>
+	<true/>
 	<key>SqueakUnTrustedDirectory</key>
-	<string>~/Library/Preferences/Squeak/Internet/My Squeak/</string>
+	<string>~/Library/Preferences/Squeak/Internet/Untrusted/</string>
 	<key>SqueakWindowAttribute</key>
-	<data>ggAAHw==</data>
+	<data>
+	ggAAHw==
+	</data>
 	<key>SqueakWindowHasTitle</key>
 	<true/>
 	<key>SqueakWindowType</key>
