@@ -6,8 +6,8 @@
 # Copyright (c) 2010 Yanni Chiu <yanni@rogers.com>
 # Copyright (c) 2010-2011 Lukas Renggli <renggli@gmail.com>
 # Copyright (c) 2012 VMware, Inc. All Rights Reserved <dhenrich@vmware.com>.
-# Copyright (c) 2013-2014 GemTalk Systems, LLC <dhenrich@gemtalksystems.com>.
-#
+# Copyright (c) 2013-2015 GemTalk Systems, LLC <dhenrich@gemtalksystems.com>.
+# Copyright (c) 2015 Paul DeBruicker.
 
 # Environment variables now defined in .travis.yml
 
@@ -39,6 +39,37 @@ if [ -f "$IMAGES_PATH/pharo" ] ; then
     PHARO_VM="$IMAGES_PATH/pharo"
     PHARO_PARAM=
 fi
+
+
+if [ $ST == "Squeak-5.0" ] ; then
+  #squeak 5 needs spur so change the VMPATH and change the paths
+    VM_PATH="$BASE_PATH/spur-oneclick/Contents";
+    case "$(uname -s)" in
+	"Linux") #we assume travis won't use ARM..........
+		PHARO_VM="$VM_PATH/LinuxAndWindows/Linux-i686/squeak"
+		PHARO_PARAM="-nosound \
+        -plugins "$VM_PATH/Linux" \
+	    -encoding latin1 \
+        -vm display=X11"
+		;;
+	"Darwin")
+		PHARO_VM="$VM_PATH/MacOS/Squeak"
+		PHARO_PARAM="-headless"
+		;;
+	"Cygwin")
+		PHARO_VM="$VM_PATH/LinuxAndWindows/Squeak.exe"
+		PHARO_PARAM="-headless"
+		;;
+	*)
+		echo "$(basename $0): unknown platform $(uname -s)"
+		exit 1
+		;;
+    esac
+fi
+
+
+
+
 
 # build configuration
 BEFORE_SCRIPTS=("$SCRIPTS_PATH/before.st")

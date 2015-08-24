@@ -30,6 +30,7 @@ env:
    - ST=Squeak-4.4
    - ST=Squeak-4.5
    - ST=Squeak-4.6
+   - ST=Squeak-5.0
    - ST=GemStone-2.4.4.1
    - ST=GemStone-2.4.5
    - ST=GemStone-2.4.6

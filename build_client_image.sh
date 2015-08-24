@@ -25,7 +25,9 @@ case "$(uname -m)" in
                 
                 case "$ST" in
                     Squeak*|Pharo*)
-                      sudo apt-get -qq install libx11-6:i386 libgl1-mesa-swx11:i386 libsm6:i386
+                      sudo apt-get -qq install libx11-6:i386 libgl1-mesa-swx11:i386 libsm6:i386 libssl1.0.0:i386
+                      sudo ln -s /lib/i386-linux-gnu/libcrypto.so.1.0.0 /lib/i386-linux-gnu/libcrypto.so.10           
+                      sudo ln -s /lib/i386-linux-gnu/libssl.so.1.0.0 /lib/i386-linux-gnu/libssl.so.10
                 esac
                 case "$ST" in
                     Pharo*)
@@ -150,6 +152,20 @@ case "$ST" in
     wget http://ftp.squeak.org/sources_files/SqueakV46.sources.gz
     gunzip SqueakV46.sources.gz
     IMAGE_BASE_NAME=Squeak4.6-15102
+    mv *.sources $SOURCES_PATH
+    ;;
+  # Squeak-5.0
+  Squeak-5.0)
+    cd $IMAGES_PATH
+    # 4.3 stores things in a Squeak4.3 directory. 5.0 doesn't.
+    # So we mimic the behaviour of 4.3.
+    mkdir -p Squeak5.0
+    cd Squeak5.0
+    wget http://ftp.squeak.org/5.0/Squeak5.0-15113.zip
+    unzip Squeak5.0-15113.zip
+    wget http://ftp.squeak.org/sources_files/SqueakV50.sources.gz
+    gunzip SqueakV50.sources.gz
+    IMAGE_BASE_NAME=Squeak5.0-15113
     mv *.sources $SOURCES_PATH
     ;;
   # Squeak-Trunk
