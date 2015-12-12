@@ -171,13 +171,13 @@ case "$ST" in
   # Squeak-Trunk
   Squeak-Trunk)
     cd $IMAGES_PATH
-    mkdir -p TrunkImage
-    cd TrunkImage
-    wget http://build.squeak.org/job/SqueakTrunk/lastSuccessfulBuild/artifact/target/TrunkImage.zip
+    mkdir -p SqueakTrunkImage
+    cd SqueakTrunkImage
+    wget http://build.squeak.org/job/Trunk/default/lastSuccessfulBuild/artifact/target/TrunkImage.zip
     unzip TrunkImage.zip
-    wget http://ftp.squeak.org/sources_files/SqueakV41.sources.gz
-    gunzip SqueakV41.sources.gz
-    IMAGE_BASE_NAME=TrunkImage
+    wget http://ftp.squeak.org/sources_files/SqueakV50.sources.gz
+    gunzip SqueakV50.sources.gz
+    IMAGE_BASE_NAME=SpurTrunkImage
     mv *.sources $SOURCES_PATH
     ;;
 
