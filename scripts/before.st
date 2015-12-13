@@ -41,8 +41,7 @@ Smalltalk
           [(updater respondsTo: #doUpdate)
             ifTrue: [updater doUpdate]
             ifFalse: [(updater respondsTo: #updateFromDefaultRepository)
-                       ifTrue: [updater updateFromDefaultRepository]
-                       ifFalse: [updater default updateFromDefaultRepository]]]
+                       ifTrue: [updater updateFromDefaultRepository]]]
           on: Warning do: [ :ex | ex resume: true ]].
         "see https://github.com/dalehenrich/builderCI/issues/48"
         fileInBlock value: 'CommandLineToolSet.st' ]].
