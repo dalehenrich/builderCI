@@ -41,7 +41,7 @@ if [ -f "$IMAGES_PATH/pharo" ] ; then
 fi
 
 
-if [ $ST == "Squeak-5.0" ] ; then
+if [ $ST == "Squeak-5.0" ] || [ $ST == "Squeak-Trunk" ] ; then
   #squeak 5 needs spur so change the VMPATH and change the paths
     VM_PATH="$BASE_PATH/spur-oneclick/Contents";
     case "$(uname -s)" in
