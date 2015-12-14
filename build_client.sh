@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -x
 #
 # build_client.sh -- Builds Pharo images using a series of Smalltalk
 #   scripts. Best to be used together with Jenkins.
