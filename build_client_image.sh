@@ -46,25 +46,25 @@ IMAGE_TARGET_NAME=$ST
 
 case "$ST" in
   PharoCore-1.2)
-    pharoGetURL="get.pharo.org/12"
+    pharoReleaseNumber="12"
     ;;
   PharoCore-1.3)
-    pharoGetURL="get.pharo.org/13"
+    pharoReleaseNumber="13"
     ;;
   Pharo-1.4)
-    pharoGetURL="get.pharo.org/14"
+    pharoReleaseNumber="14"
     ;;
   Pharo-2.0)
-    pharoGetURL="get.pharo.org/20"
+    pharoReleaseNumber="20"
     ;;
   Pharo-3.0)
-    pharoGetURL="get.pharo.org/30"
+    pharoReleaseNumber="30"
     ;;
   Pharo-4.0)
-    pharoGetURL="get.pharo.org/40"
+    pharoReleaseNumber="40"
     ;;
   Pharo-5.0)
-    pharoGetURL="get.pharo.org/50"
+    pharoReleaseNumber="50"
     ;;
   *)
     # noop
@@ -94,8 +94,8 @@ case "$ST" in
     cd $IMAGES_PATH
     mkdir $ST
     cd $ST
-    wget --quiet -O - get.pharo.org/vm | bash
-    wget --quiet -O - ${pharoGetURL} | bash
+    wget --quiet -O - get.pharo.org/vm${pharoReleaseNumber} | bash
+    wget --quiet -O - get.pharo.org/${pharoReleaseNumber} | bash
     IMAGE_BASE_NAME=Pharo
     # move VM to $IMAGES_PATH 
     mv pharo ..

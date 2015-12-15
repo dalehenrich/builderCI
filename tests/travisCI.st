@@ -13,6 +13,7 @@ Transcript cr; show: 'travis---->travisCI.st'.
         do: [:ex |
                 Transcript cr; show: 'Warning: ', ex description.
                 ex resume: true].
+Transcript cr; show: '  Finished load.'.
 
 "Run the tests"
 TravisCIHarness
