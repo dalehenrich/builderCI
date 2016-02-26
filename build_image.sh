@@ -35,6 +35,10 @@ case "$ST" in
         GEMSTONE_VERSION_NAME="${ST:9}"
         KEY_PATH="./gemstone/GemStone64Bit3.2.0-x86_64.Linux.key"
  ;;
+  GemStone-3.3.*)
+        GEMSTONE_VERSION_NAME="${ST:9}"
+        KEY_PATH="./gemstone/GemStone64Bit3.3.0-x86_64.Linux.key"
+ ;;
 
 
   # unknown
