@@ -14,7 +14,7 @@ case "$ST" in
         if [[ $? != 0 ]] ; then exit 1; fi
 	exit 0
   ;;
-  GemStone-2.4*|GemStone-3.0.1|GemStone-3.1.0.*|GemStone-3.2.*)
+  GemStone-2.4*|GemStone-3.*)
       	./build_gemstone.sh "$@"
       	if [[ $? != 0 ]] ; then exit 1; fi
 	exit 0
