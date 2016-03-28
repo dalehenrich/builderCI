@@ -33,7 +33,7 @@ case "$(uname -m)" in
                     Pharo*)
                       sudo apt-get -qq install libssl1.0.0:i386
                       # libFT2Plugin
-                      sudo apt-get -qq install libfreetype6
+                      sudo apt-get -qq install libfreetype6:i386
                 esac
                 ;;
         *)
