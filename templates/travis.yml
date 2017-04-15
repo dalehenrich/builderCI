@@ -40,6 +40,7 @@ matrix:
 
 # Boilerplate ... should be no reason to edit the install section
 install:
+   - sudo apt-get install -qq ia32-libs-multiarch
    - export PROJECT_HOME="$(pwd)"
    - cd $HOME
    # Download latest builderCI
